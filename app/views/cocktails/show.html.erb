@@ -1,0 +1,15 @@
+<h1>Here are the details of <%= @cocktail.name %></h1>
+
+
+<div class="container">
+  <% @cocktail.each do |c| %>
+  <div class="row">
+    <div class="col-xs-12 col-sm_6 col-md-3">
+    <%= render 'card', cocktail: c %>
+    <%= link_to('Go back to Cocktails List', root) %>
+    <%= link_to('Add a dose/ingredient to this cocktail', ) %>
+    <%= link_to('Delete a dose/ingredient', ) %>
+    </div>
+  </div>
+  <% end %>
+</div>
