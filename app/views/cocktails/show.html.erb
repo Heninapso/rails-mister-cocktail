@@ -9,6 +9,7 @@
   <span class='links'>
     <%= link_to('Go back to Cocktails List', cocktails_path) %>
     <%= link_to('Add a dose/ingredient to this cocktail', new_cocktail_dose_path(@cocktail)) %>
+    <%= link_to('Delete a dose/ingredient to this cocktail', dose_path(@cocktail, @dose)) %>
   </span>
 </div>
 
