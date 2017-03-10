@@ -3,24 +3,23 @@
 <div class="container">
 
 
-  <p>Add ingredients to @cocktail.name</p>
+  <p>Add ingredients to <%= @cocktail.name %></p>
   <%= simple_form_for([@cocktail, @dose]) do |f| %>
     <%= f.error_notification %>
     <%= f.input :description %>
-    <%= f.input :ingredient_id, collection: Ingredient.all.map {|i| i.name} %>
-    <%= @dose.errors.keys.include?(:ingredient) ? 'Error' : '' %>
+    <%= f.association :ingredient %>
     <%= f.submit 'Add' %>
   <% end %>
 
   <span class="cocktail_description">
   <p>Here are the doses</p>
-  <%= @cocktail.doses.each do |dose| %>
+  <% @cocktail.doses.each do |dose| %>
     <li><%= dose.description %> - <%= dose.ingredient.name %></li>
     <% end %>
   </span>
   <span class='links'>
-    <%= link_to('Go back to Cocktails List', cocktails_path) %>
-    <%= link_to('Delete a dose/ingredient to this cocktail', dose_path(@cocktail, @dose)) %>
+    <p><%= link_to('Go back to Cocktails List', cocktails_path) %><p>
+    <p><%= link_to('Delete a dose/ingredient to this cocktail', dose_path(@cocktail, @dose)) %><p>
   </span>
 </div>
 
