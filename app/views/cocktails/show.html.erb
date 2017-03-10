@@ -1,29 +1,32 @@
-<h1>Here are the details of <%= @cocktail.name %></h1>
 
 <div class="container">
-<% if @cocktail.picture? %>
-  <%= cl_image_tag @cocktail.picture.path, width: 200, height: 300, crop: :fill %>
-<% end %>
+  <h1>Here are the details of <%= @cocktail.name %></h1>
 
-
-  <p>Add ingredients to <%= @cocktail.name %></p>
-  <%= simple_form_for([@cocktail, @dose]) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :description %>
-    <%= f.association :ingredient %>
-    <%= f.submit 'Add' %>
-  <% end %>
-
-  <span class="cocktail_description">
-  <p>Here are the doses</p>
-  <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %> - <%= dose.ingredient.name %> - <%= link_to('Do you want to delete the dose?', dose_path(dose),
-      method: :delete,
-      data: { confirm: "Are you sure?" }) %></li>
+  <div class="picture">
+    <% if @cocktail.picture? %>
+      <%= cl_image_tag @cocktail.picture.path, width: 200, height: 100, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag("rfnisvb9secsj2uq4qe0", width: 200, height: 100, crop: :fill) %>
     <% end %>
-  </span>
+  </div>
+
+  <div class="add-ingredients">
+    <p>Add ingredients to <%= @cocktail.name %></p>
+    <%= render 'new_dose_form' %>
+
+    <span class="cocktail_description">
+      <p>Here are the doses</p>
+      <% @cocktail.doses.each do |dose| %>
+        <li><%= dose.description %> - <%= dose.ingredient.name %> - <%= link_to('Do you want to delete the dose?', dose_path(dose),
+          method: :delete,
+          data: { confirm: "Are you sure?" }) %></li>
+        <% end %>
+    </span>
+  </div>
+
   <span class='links'>
-    <p><%= link_to('Go back to Cocktails List', cocktails_path) %><p>
+    <p><%= link_to('Go back to Cocktails List', cocktails_path, {class: 'btn btn-danger'}) %><p>
   </span>
+
 </div>
 
