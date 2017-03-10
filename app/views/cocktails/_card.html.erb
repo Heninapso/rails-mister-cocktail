@@ -1,13 +1,14 @@
-<!-- <div class="card">
-  <div class="card-title">
-    <div class="card-content">
-      <h3><%= cocktail.name %></h3>
-    </div>
-  </div>
-</div> -->
+
 
 <div class="card text-center">
+  <% if cocktail.picture? %>
+    <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.picture.path, width: 200, height: 100, crop: :fill %>')">
+    </div>
+  <% else %>
+    <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path ("rfnisvb9secsj2uq4qe0"), width: 200, height: 100, crop: :fill %>')">
+    </div>
+  <% end %>
   <div class="card-body">
-    <%= link_to cocktail.name, cocktail_path(cocktail) %>
+    <p><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
   </div>
 </div>

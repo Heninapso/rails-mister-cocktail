@@ -1,6 +1,9 @@
 <h1>Here are the details of <%= @cocktail.name %></h1>
 
 <div class="container">
+<% if @cocktail.picture? %>
+  <%= cl_image_tag @cocktail.picture.path, width: 200, height: 300, crop: :fill %>
+<% end %>
 
 
   <p>Add ingredients to <%= @cocktail.name %></p>

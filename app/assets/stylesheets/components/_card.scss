@@ -1,0 +1,16 @@
+.card {
+  padding: 20px
+}
+
+.card-header {
+  height: 100px;
+  padding: 5px;
+  margin: 20px 0px 10px 0px;
+  background-position: center;
+}
+
+.card-body a {
+  color: $red;
+  font-size: 16px;
+  font-weight: bolder;
+}
