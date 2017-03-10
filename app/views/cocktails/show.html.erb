@@ -14,12 +14,13 @@
   <span class="cocktail_description">
   <p>Here are the doses</p>
   <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %> - <%= dose.ingredient.name %></li>
+    <li><%= dose.description %> - <%= dose.ingredient.name %> - <%= link_to('Do you want to delete the dose?', dose_path(dose),
+      method: :delete,
+      data: { confirm: "Are you sure?" }) %></li>
     <% end %>
   </span>
   <span class='links'>
     <p><%= link_to('Go back to Cocktails List', cocktails_path) %><p>
-    <p><%= link_to('Delete a dose/ingredient to this cocktail', dose_path(@cocktail, @dose)) %><p>
   </span>
 </div>
 
